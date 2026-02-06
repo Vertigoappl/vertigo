@@ -1,0 +1,65 @@
+import React, { useState, useEffect } from 'react';
+import { Mail, Shield, FileText, Menu, X, ArrowRight, Smartphone, Globe, Lock, CheckCircle } from 'lucide-react';
+
+// --- PAGE COMPONENTS ---
+
+const Home = ({ navigateTo }) => {
+  const [formStatus, setFormStatus] = useState('idle'); // idle, submitting, success
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setFormStatus('submitting');
+    
+    // Simulation of submission
+    setTimeout(() => {
+      setFormStatus('success');
+      // In a real environment, connect to a backend service here.
+    }, 1500);
+  };
+
+  return (
+    <div className="animate-fade-in">
+      {/* Hero Section */}
+      <section className="bg-slate-900 text-white py-20 px-6">
+        <div className="max-w-6xl mx-auto text-center">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
+            Crafting Extraordinary <span className="text-blue-500">Mobile Experiences</span>
+          </h1>
+          <button 
+            onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
+            className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full font-medium transition-all flex items-center gap-2 mx-auto mt-10"
+          >
+            Contact Us <ArrowRight size={18} />
+          </button>
+        </div>
+      </section>
+
+      {/* Services Snippet */}
+      <section className="py-16 px-6 bg-slate-50">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
+          <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-100">
+            <div className="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center mb-4">
+              <Smartphone size={24} />
+            </div>
+            <h3 className="text-xl font-bold mb-2 text-slate-900">Native iOS Development</h3>
+            <p className="text-slate-600">Apps optimized for the Apple ecosystem, ensuring the best performance and user experience.</p>
+          </div>
+          <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-100">
+            <div className="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center mb-4">
+              <Lock size={24} />
+            </div>
+            <h3 className="text-xl font-bold mb-2 text-slate-900">Privacy First</h3>
+            <p className="text-slate-600">We implement the highest security standards and compliance with international regulations.</p>
+          </div>
+          <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-100">
+            <div className="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center mb-4">
+              <Globe size={24} />
+            </div>
+            <h3 className="text-xl font-bold mb-2 text-slate-900">Global Reach</h3>
+            <p className="text-slate-600">We develop with international scalability in mind, including ad integration and monetization.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Form Section */}
+      <section id="contact" className="py-20 px-6 bg-white">
